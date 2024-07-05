@@ -14,7 +14,8 @@ const Register = () => {
     const dispatch = useDispatch();
 
     const status= useSelector((state)=>state.auth.status) //returns auth state and stores the status value of auth
-    //console.log(status)  
+    console.log(status)  
+
   const handleRegister = (data) => {
     dispatch(register(data)); //sends data to the state or container of the authSlice //state
     // console.log(data)
@@ -22,16 +23,29 @@ const Register = () => {
     //check the status value
     //status --> success --> navigate to login else else to register page!!
 
-  if (status===STATUSES.SUCCESS) {
+ 
+   
+   
+  };
+
+
+  useEffect(()=>{  
+
+    if (status===STATUSES.SUCCESS) 
+      {
     navigate('/login');
-    
+    console.log(status)
+    // dispatch(setStatus(STATUSES.LOADING))
+
+
+
   } else {
     navigate('/register');
     
   }
-   
-   
-  };
+
+  },[status])
+
 
   return <Form type="Register" onSubmit={handleRegister} />;
 };

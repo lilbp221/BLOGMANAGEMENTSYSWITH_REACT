@@ -5,7 +5,7 @@ import blogSlice from './blogSlice'
 const store = configureStore({
     reducer : {
         auth : authSlice,
-        blog:blogSlice,
+        blog : blogSlice,
     
     }
 })

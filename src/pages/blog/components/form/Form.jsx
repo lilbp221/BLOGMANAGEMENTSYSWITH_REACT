@@ -1,28 +1,57 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-const Form = ({ type,onSubmit }) => {
-	const[data,setData]= useState({
-		title:'',
-		subtitle:'',
-		category:'',
-		description:'',
-		imageUrl:'',
-	})
+const Form = ({ type, onSubmit }) => {
 
-  const handleChange=(e)=>{
-    const name= e.target.name
-    const value=e.target.value
+
+
+  const [data, setData] = useState({
+    title: "",
+    subtitle: "",
+    category: "",
+    description: "",
+    imageUrl: "",
+  });
+  const { id } = useParams();
+
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
 
     setData({
       ...data,
-      [name]:value,
-    })
-  }
+      [name]: value,
+    });
+  };
 
-  const handleSubmit=(e)=>{
-    e.preventDefault()
-    onSubmit(data)
-  }
+  
+
+  //for updating the values in the form which was previously filled
+
+
+  const fetchBlog = async () => {
+    const response = await axios.get(
+      `https://react30.onrender.com/api/user/blog/${id}`
+    );
+    if (response.status === 200) {
+      if (response.status === 200) {
+        setData(response.data.data);
+      }
+    }
+  };
+  useEffect(() => {
+    fetchBlog();
+  }, []);
+
+  //for updating the values in the form which was previously filled
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(data);
+     console.log(data)
+  };
 
   return (
     <div class="flex justify-center  w-screen h-screen">
@@ -34,41 +63,59 @@ const Form = ({ type,onSubmit }) => {
             </h1>
           </div>
           <form onSubmit={handleSubmit}>
-          <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="text"
-              placeholder="Title*" name="title" onChange={handleChange}
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="text"
-              placeholder="Subtitle*" name="subtitle" onChange={handleChange}
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="file" name="imageUrl" onChange={handleChange}
-            />
-            <input
-              class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
-              type="number"
-              placeholder="Category*" name="category" onChange={handleChange}
-            /> 
-          </div>
-          <div class="my-4">
-            <textarea
-              placeholder="Description*"
-              class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" name="description" onChange={handleChange}
-            ></textarea>
-          </div>
-          <div class="my-2 w-1/2 lg:w-1/4">
-            <button
-              class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
+              <input
+                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="Title*"
+                name="title"
+                onChange={handleChange}
+                value={data.title}
+              />
+
+              <input
+                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="Subtitle*"
+                name="subtitle"
+                onChange={handleChange}
+                value={data.subtitle}
+
+              />
+              <input
+                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                type="file"
+                name="imageUrl"
+                onChange={handleChange}
+              />
+              <input
+                class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="Category*"
+                name="category"
+                onChange={handleChange}
+                value={data.category}
+
+              />
+            </div>
+            <div class="my-4">
+              <textarea
+                placeholder="Description*"
+                class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                name="description"
+                onChange={handleChange}
+                value={data.description}
+
+              ></textarea>
+            </div>
+            <div class="my-2 w-1/2 lg:w-1/4">
+              <button
+                class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
                       focus:outline-none focus:shadow-outline"
-            >
-              Submit
-            </button>
-          </div>
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

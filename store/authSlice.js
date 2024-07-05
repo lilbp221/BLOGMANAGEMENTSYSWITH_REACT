@@ -2,6 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 import axios from 'axios'
 import STATUSES from '../src/globals/status/statuses'
 import { useNavigate } from 'react-router-dom'
+import API from '../src/http'
 
 
 const authSlice = createSlice({
@@ -38,7 +39,7 @@ export function register(data){
     return async function registerThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
         try {
-            const response =  await axios.post('https://react30.onrender.com/api/user/register',data)
+            const response =  await API.post("register",data)
             if(response.status === 201){
              dispatch(setUser(data))
           
