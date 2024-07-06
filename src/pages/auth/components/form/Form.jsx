@@ -65,9 +65,19 @@ const Form = ({type,onSubmit,user}) => {
                 </div>
                 {
                     type === 'Register' ? (
-                        <Link to='/login' style={{color:'blue'}} >Go to login</Link>
+
+                        //use <> </> tag if more than one element in ternanry operator condition?True:False
+                        <>
+                        <span className="text-black" >Already Registered? </span>
+                   <Link to='/login' style={{color:'blue'}} > Go to login</Link>
+
+                        </>
                     ) : (
-                        <Link to='/register'style={{color:'blue'}} >Go to register</Link>
+                        <> 
+                        <span className="text-black" >Not Registered? </span> 
+                        <Link to='/register'style={{color:'blue'}} > Go to register</Link>
+
+                        </>
 
                     )
                 }

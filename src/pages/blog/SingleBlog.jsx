@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { deleteBlog } from "../../../store/blogSlice";
 
@@ -10,6 +10,7 @@ const SingleBlog = () => {
     const dispatch = useDispatch()
   const  {id}  = useParams();
   const navigate=useNavigate()
+  const {status}= useSelector((state)=>state.blog)
 
   const [blog, setBlog] = useState({}); //i want object in useState so {}
 
@@ -30,8 +31,14 @@ const SingleBlog = () => {
    dispatch(deleteBlog(id)) 
 
   
-  
+   if (status === 200) {
+    alert("Blog Deleted Successfully !!")
     navigate("/");
+  }
+  else{
+    alert("You are not the Author !!")
+  }
+   
   
   }
 

@@ -18,10 +18,10 @@ console.log(status)
 
     dispatch(login(data));
     if (status === STATUSES.SUCCESS) {
-          navigate("/");
-        } else {
-          navigate("/login");
-        }
+      navigate("/");
+    }
+
+   
   };
 
   // useEffect(() => {

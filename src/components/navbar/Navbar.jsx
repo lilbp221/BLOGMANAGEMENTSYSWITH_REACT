@@ -1,25 +1,64 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+const navigate=useNavigate()
+  const {token:user}= useSelector((state)=>state.auth) //GIVES THE VALUE OF TOKEN FROM STATE IN STRING
+  const [isLoggedIn,setisLoggedIn] = useState(false)
+  useEffect(() => {
+const token=localStorage.getItem('token') //GIVES THE VALUE OF TOKEN FROM LOCAL STORAGE IN STRING
+
+//The double exclamation marks (!!) are used to convert a value to a boolean. it could be a string if a token is stored or null if no token is found
+
+setisLoggedIn(!!token || !!user)
+  },[user])
+   
+  const handleLogout=()=>{
+    navigate('/login')
+    localStorage.removeItem('token');
+    setisLoggedIn(false)
+    
+  }
   return (
 <nav className="bg-white border-gray-200 dark:bg-gray-900">
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
   <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT9uDJ9kV7C3zO6iOt95e24Dtt3QMSncmqLLsuv4KWpeC_Gx6C0AZZpyHQWps4h-Psq8&usqp=CAU" className="h-8" alt="Flowbite Logo" />
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BlogMS</span>
   </Link>
   <div className="flex md:order-2">
   <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+      {/* if the value of login is false then display CREATE BLOG | REGISTER | LOGIN */}
+      
+      {/*  The ternary operator in JavaScript SYNTAX::::::  condition ? expressionIfTrue : expressionIfFalse; */}
+       {!isLoggedIn?(
+        <>
+       
         <li>
-          <Link to="/blog/add" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Create Blog</Link>
+          <Link to="/register" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Register</Link>
         </li>
         <li>
-          <Link to="/register" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Register</Link>
+          <Link to="/login" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Login</Link>
         </li>
+        </>
+       ): 
+     
+       
+       (
+        <>
         <li>
-          <Link to="/login" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</Link>
+          <Link to="/blog/add" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white" aria-current="page">Create Blog</Link>
         </li>
+
+        <li>
+          <Link onClick={handleLogout} className="block py-2 px-3 text-white bg-pink-700 rounded md:bg-pink-700  md:text-white">Logout</Link>
+        </li>
+        </>
+        )
+       
+       }
       </ul>
     <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
         <span className="sr-only">Open main menu</span>

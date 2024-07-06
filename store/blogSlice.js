@@ -83,7 +83,7 @@ export function deleteBlog(id) {
     try {
       const response = await API.delete(`blog/${id}`, {
         headers: {
-        token:localStorage.getItem("token")
+        Authorization:localStorage.getItem("token")
         },
       });
 
