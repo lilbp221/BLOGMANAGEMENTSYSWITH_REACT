@@ -38,10 +38,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Card = ({ blog }) => {
+  console.log(blog.imageUrl)
   return (
     <Link to={`/blogs/${blog._id}`} className="block rounded overflow-hidden shadow-lg mb-4">
       <div className="grid grid-rows-[auto,auto,1fr,auto] h-full">
         <img className="w-full h-48 object-cover row-span-1" src={blog.imageUrl} alt={blog.title} />
+
         <div className="px-6 py-4 row-span-1">
           <div className="font-bold text-xl mb-2 truncate">Title: {blog.title}</div>
         </div>
@@ -49,7 +51,7 @@ const Card = ({ blog }) => {
           <p className="text-gray-700 text-base overflow-hidden line-clamp-3">Description:{blog.description}</p>
         </div>
         <div className="px-6 pt-4 pb-2 row-span-1">
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">SubTitle:blog.subtitle</span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hastags___</span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hastags</span>
           <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#hastags</span>
         </div>

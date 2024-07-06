@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-
 const Form = ({type,onSubmit,user}) => {
     const [data,setData] = useState({   //Note that the useState keys (email,password etc)must  be equivalent to name in input fields
 
@@ -75,7 +74,7 @@ const Form = ({type,onSubmit,user}) => {
                     ) : (
                         <> 
                         <span className="text-black" >Not Registered? </span> 
-                        <Link to='/register'style={{color:'blue'}} > Go to register</Link>
+                        <Link to='/register' style={{color:'blue'}} > Go to register</Link>
 
                         </>
 

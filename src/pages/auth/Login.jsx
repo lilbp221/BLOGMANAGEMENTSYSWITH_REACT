@@ -18,14 +18,14 @@ console.log(status)
 
     dispatch(login(data));
     if (status === STATUSES.SUCCESS) {
+      alert("Login successful!")
       navigate("/");
     }
-
    
   };
 
   // useEffect(() => {
-  //  
+  
   // }, [status]);
 
   // console.log(user)

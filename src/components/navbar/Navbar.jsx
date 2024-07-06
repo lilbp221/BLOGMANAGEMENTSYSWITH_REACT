@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
 const navigate=useNavigate()
@@ -15,7 +15,8 @@ setisLoggedIn(!!token || !!user)
   },[user])
    
   const handleLogout=()=>{
-    navigate('/login')
+    
+     navigate('/login')
     localStorage.removeItem('token');
     setisLoggedIn(false)
     
@@ -25,7 +26,7 @@ setisLoggedIn(!!token || !!user)
   <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
   <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT9uDJ9kV7C3zO6iOt95e24Dtt3QMSncmqLLsuv4KWpeC_Gx6C0AZZpyHQWps4h-Psq8&usqp=CAU" className="h-8" alt="Flowbite Logo" />
-      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">BlogMS</span>
+      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Blogbook</span>
   </Link>
   <div className="flex md:order-2">
   <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">

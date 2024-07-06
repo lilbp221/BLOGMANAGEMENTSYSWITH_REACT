@@ -57,7 +57,7 @@ export function fetchBlog() {
     dispatch(setStatus(STATUSES.LOADING));
 
     try {
-      const response = await API.get("blog", 
+      const response = await axios.get(`https://react30.onrender.com/api/user/blog`
       
       );
 
