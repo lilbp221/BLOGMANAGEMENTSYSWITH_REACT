@@ -114,7 +114,7 @@ const Form = ({ type, onSubmit }) => {
                 class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
                       focus:outline-none focus:shadow-outline"
               >
-                Submit
+               {type}
               </button>
             </div>
           </form>
