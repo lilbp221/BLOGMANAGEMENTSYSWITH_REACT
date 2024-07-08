@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { deleteBlog } from "../../../store/blogSlice";
+import STATUSES from "../../globals/status/statuses";
 
 const SingleBlog = () => {
 
@@ -28,10 +29,10 @@ const SingleBlog = () => {
 
   const deletetheBlog=()=>{
 
-   dispatch(deleteBlog(id)) 
-
+   dispatch(deleteBlog(id) )
+console.log(status)
   
-   if (status === 200) {
+   if (status === STATUSES.SUCCESS){
     alert("Blog Deleted Successfully !!")
     navigate("/");
   }

@@ -17,15 +17,17 @@ console.log(status)
   const handleLogin = (data) => {
 
     dispatch(login(data));
+    console.log(status)
     if (status === STATUSES.SUCCESS) {
-      alert("Login successful!")
+      
       navigate("/");
     }
+    
    
   };
 
   // useEffect(() => {
-  
+
   // }, [status]);
 
   // console.log(user)

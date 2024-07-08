@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import STATUSES from "../src/globals/status/statuses";
 import API from "../src/http";
+import { useParams } from "react-router-dom";
 
 const blogSlice = createSlice({
+
   name: "blog",
   initialState: {
    data: [] , //empty object //higher order functoin like map() only works with array
@@ -18,6 +20,7 @@ const blogSlice = createSlice({
     },
   },
 });
+
 
 const { setBlog, setStatus } = blogSlice.actions;
 export default blogSlice.reducer;
@@ -77,7 +80,9 @@ export function fetchBlog() {
 
 //thunk for api hitting while deleting a blog
 export function deleteBlog(id) {
+
   return async function deleteBlogThunk(dispatch) {
+
     dispatch(setStatus(STATUSES.LOADING));
 
     try {

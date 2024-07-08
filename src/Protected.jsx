@@ -9,8 +9,8 @@ const Protected = ({ children }) => {
   const isAuth = token || localStorage.getItem('token');
 
   if (!isAuth) {
-    alert('Please login to continue!!');
     return <Navigate to="/login" />;
+
   }
 
   return children;

@@ -16,9 +16,10 @@ setisLoggedIn(!!token || !!user)
    
   const handleLogout=()=>{
     
-     navigate('/login')
     localStorage.removeItem('token');
     setisLoggedIn(false)
+    navigate('/')
+
     
   }
   return (
