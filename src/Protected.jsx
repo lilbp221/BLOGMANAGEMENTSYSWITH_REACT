@@ -9,7 +9,7 @@ const Protected = ({ children }) => {
   const isAuth = token || localStorage.getItem('token');
 
   if (!isAuth) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
 
   }
 
