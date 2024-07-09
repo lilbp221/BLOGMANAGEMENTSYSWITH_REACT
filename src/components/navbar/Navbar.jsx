@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { setToken } from '../../../store/authSlice'
 
 const Navbar = () => {
 const navigate=useNavigate()
+
+const dispatch= useDispatch()
   const {token:user}= useSelector((state)=>state.auth) //GIVES THE VALUE OF TOKEN FROM STATE IN STRING
   const [isLoggedIn,setisLoggedIn] = useState()
   useEffect(() => {
@@ -19,7 +21,7 @@ setisLoggedIn(!!token || !!user)
     
     localStorage.removeItem('token');
     setisLoggedIn(false)
-    navigate('/')
+    navigate('/login')
 dispatch(setToken(null))
 
 
