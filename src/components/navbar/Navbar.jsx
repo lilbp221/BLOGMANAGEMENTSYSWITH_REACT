@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { setToken } from '../../../store/authSlice'
 
 const Navbar = () => {
 const navigate=useNavigate()
   const {token:user}= useSelector((state)=>state.auth) //GIVES THE VALUE OF TOKEN FROM STATE IN STRING
-  const [isLoggedIn,setisLoggedIn] = useState(false)
+  const [isLoggedIn,setisLoggedIn] = useState()
   useEffect(() => {
 const token=localStorage.getItem('token') //GIVES THE VALUE OF TOKEN FROM LOCAL STORAGE IN STRING
 
@@ -19,6 +20,8 @@ setisLoggedIn(!!token || !!user)
     localStorage.removeItem('token');
     setisLoggedIn(false)
     navigate('/')
+dispatch(setToken(null))
+
 
     
   }
@@ -31,24 +34,11 @@ setisLoggedIn(!!token || !!user)
   </Link>
   <div className="flex md:order-2">
   <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-
+ 
       {/* if the value of login is false then display CREATE BLOG | REGISTER | LOGIN */}
       
       {/*  The ternary operator in JavaScript SYNTAX::::::  condition ? expressionIfTrue : expressionIfFalse; */}
-       {!isLoggedIn?(
-        <>
-       
-        <li>
-          <Link to="/register" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Register</Link>
-        </li>
-        <li>
-          <Link to="/login" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Login</Link>
-        </li>
-        </>
-       ): 
-     
-       
-       (
+       {isLoggedIn?(
         <>
         <li>
           <Link to="/blog/add" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white" aria-current="page">Create Blog</Link>
@@ -58,6 +48,19 @@ setisLoggedIn(!!token || !!user)
           <Link onClick={handleLogout} className="block py-2 px-3 text-white bg-pink-700 rounded md:bg-pink-700  md:text-white">Logout</Link>
         </li>
         </>
+       ): 
+     
+       
+       (
+        <>
+       
+       <li>
+         <Link to="/register" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Register</Link>
+       </li>
+       <li>
+         <Link to="/login" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Login</Link>
+       </li>
+       </>
         )
        
        }

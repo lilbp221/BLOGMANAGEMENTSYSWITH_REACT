@@ -33,7 +33,7 @@ const SingleBlog = () => {
 console.log(status)
   
    if (status === STATUSES.SUCCESS){
-    alert("Blog Deleted Successfully !!")
+    
     navigate("/");
   }
   else{
