@@ -23,7 +23,8 @@ const EditBlog = () => {
       if (response.status === 200) {
         navigate(`/blogs/${data._id}`); // Redirect to the updated blog page
       } else {
-        alert("Failed to update blog");
+        alert(error.response.data.message);
+
       }
     } catch (error) {
       alert(error.response.data.message);
