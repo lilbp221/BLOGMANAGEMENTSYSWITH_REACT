@@ -12,6 +12,15 @@ const Form = ({type,onSubmit,user}) => {
         const name=e.target.name
         const value=e.target.value
 
+        // if(name==username&& value.length<4)
+        //     {
+        //         alert("Name must be at least 4 characters")
+        //     }
+        //     if(name==password&& value.length<4)
+        //         {
+        //             alert("Password must be at least 6 characters")
+        //         }
+
         setData({
             ...data,
             [name] : value
@@ -48,14 +57,14 @@ const Form = ({type,onSubmit,user}) => {
                    {
                     type === 'Register' && (
                         <div className="relative">
-                        <input autoComplete="off" id="username" name="username" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 font-mono " placeholder="username address" onChange={handleChange} required />
-                        <label htmlFor="username" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm font-mono ">Username</label>
+                        <input autoComplete="off" id="username" name="username" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 font-mono " placeholder="username address" onChange={handleChange} required pattern=".{4,}" />
+                        <label htmlFor="useranme" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-md font-mono ">Username</label>
                     </div>
                     )
                    }
                         <div className="relative">
-                            <input autoComplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" onChange={handleChange} required font-mono />
-                            <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm font-mono ">Password</label>
+                            <input autoComplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" onChange={handleChange} required font-mono pattern=".{6,}"/>
+                            <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm font-mono ">Password (Minimum Length:6)</label>
                         </div>
                         <div className="relative">
                             <button className="bg-blue-500 text-white rounded-md px-2 py-1 font-mono ">Submit</button>
