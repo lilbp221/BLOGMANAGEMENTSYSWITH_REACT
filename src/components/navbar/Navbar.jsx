@@ -21,7 +21,7 @@ setisLoggedIn(!!token || !!user)
     
     localStorage.removeItem('token');
     setisLoggedIn(false)
-    navigate('/login')
+    navigate('/')
 dispatch(setToken(null))
 
 
