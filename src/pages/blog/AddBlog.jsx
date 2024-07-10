@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Layout from "../../components/layout/Layout";
 import Form from "./components/form/Form";
@@ -7,24 +7,48 @@ import blogSlice, { createBlog } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
 import { useNavigate } from "react-router-dom";
 import { setStatus } from "../../../store/authSlice";
-import { ErrorBoundary } from "react-error-boundary";
 import { TailSpin } from "react-loader-spinner";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
-  const status = useSelector((state) => state.blog.status);
+  const {status} = useSelector((state) => state.blog);
   const navigate = useNavigate();
+  const[isLoading,setisLoading]=useState(false)
+
+  console.log(status)
+  console.log({isLoading})
 
   const handleAddblog = (data) => {
+    setisLoading(true);
     dispatch(createBlog(data));
-
-    if (status === STATUSES.SUCCESS) {
-      navigate("/");
-    }
   };
 
+  useEffect(()=>{
+    if (status === STATUSES.SUCCESS) {
+      dispatch(setStatus("STATUSES.LOADING"));
+      setisLoading(false)
+      navigate("/");
+    }
+    else{
+      setisLoading(false)
+ 
+    }
+  },[status,navigate,dispatch])
+
   return (
+    
+      
     <Layout>
+    <div>
+      {isLoading && status === STATUSES.LOADING && (
+        <TailSpin
+          height="80"
+          width="80"
+          color="blue"
+          ariaLabel="loading"
+        />
+      )}
+      </div>
       <Form type="Create" onSubmit={handleAddblog} />
     </Layout>
   );

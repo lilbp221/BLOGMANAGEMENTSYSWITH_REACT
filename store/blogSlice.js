@@ -65,7 +65,7 @@ export function fetchBlog() {
       );
 
       if (response.status === 200 && response.data.data.length>0) {
-        dispatch(setStatus(STATUSES.SUCCESS));
+        // dispatch(setStatus(STATUSES.SUCCESS));
         dispatch(setBlog(response.data.data)) //setblogData(input data)
         console.log(response.data.data)
 
@@ -103,4 +103,32 @@ export function deleteBlog(id) {
       dispatch(setStatus(STATUSES.ERROR));
     }
   };
+}
+
+
+export function editBlog(data,id){
+  return async function(dispatch){
+    dispatch(setStatus(STATUSES.LOADING));
+    try {
+      const response = await axios.patch(`https://react30.onrender.com/api/user/blog/${id}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: localStorage.getItem("token"),
+        },
+      });
+
+      if (response.status === 200) {
+        dispatch(setStatus(STATUSES.SUCCESS));
+
+        // navigate(`/blogs/${data._id}`); // Redirect to the updated blog page
+      } else {
+        dispatch(setStatus(STATUSES.ERROR));
+
+
+      }
+    } catch (error) {
+      dispatch(setStatus(STATUSES.ERROR));
+
+    }
+  }
 }

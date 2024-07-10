@@ -5,6 +5,7 @@ import STATUSES from "../../globals/status/statuses";
 import { login, setStatus } from "../../../store/authSlice";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
+import Spinner from "./components/Spinner";
 
 const Login = () => {
 
@@ -41,12 +42,7 @@ const Login = () => {
   return (
     <div>
       {isLoggingIn && status === STATUSES.LOADING && (
-        <TailSpin
-          height="80"
-          width="80"
-          color="blue"
-          ariaLabel="loading"
-        />
+        <Spinner/>
       )}
       <Form type="Login" user={user} onSubmit={handleLogin} />
     </div>

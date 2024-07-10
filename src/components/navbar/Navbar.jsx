@@ -41,15 +41,15 @@ dispatch(setToken(null))
       
       {/*  The ternary operator in JavaScript SYNTAX::::::  condition ? expressionIfTrue : expressionIfFalse; */}
        {isLoggedIn?(
-        <>
-        <li>
-          <Link to="/blog/add" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white" aria-current="page">Create Blog</Link>
-        </li>
+        <div class="flex justify auto gap-2">
+        <div>
+          <Link to="/blog/add" className="block py-2 px-3  text-white bg-blue-700 rounded md:bg-blue-700  md:text-white" aria-current="page">Create Blog</Link>
+        </div>
 
-        <li>
+        <div>
           <Link onClick={handleLogout} className="block py-2 px-3 text-white bg-pink-700 rounded md:bg-pink-700  md:text-white">Logout</Link>
-        </li>
-        </>
+        </div>
+        </div>
        ): 
      
        

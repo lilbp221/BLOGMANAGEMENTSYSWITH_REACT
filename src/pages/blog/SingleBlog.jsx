@@ -5,50 +5,55 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { deleteBlog } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
+import { TailSpin } from "react-loader-spinner";
+import Spinner from "../auth/components/Spinner";
 
 const SingleBlog = () => {
-
-    const dispatch = useDispatch()
-  const  {id}  = useParams();
-  const navigate=useNavigate()
-  const {status}= useSelector((state)=>state.blog)
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { status } = useSelector((state) => state.blog);
+  const[isloading,setisLoading]=useState(true)
 
   const [blog, setBlog] = useState({}); //i want object in useState so {}
 
-//for fetching the form data in single blog page i.e the page that opens after card from hoome page is clicked
+  //for fetching the form data in single blog page i.e the page that opens after card from hoome page is clicked
 
   const fetchBlog = async () => {
-  
-    const response = await axios.get(`https://react30.onrender.com/api/user/blog/${id}`);
+    const response = await axios.get(
+      `https://react30.onrender.com/api/user/blog/${id}`
+    );
     if (response.status === 200) {
-        if (response.status === 200) {
-            setBlog(response.data.data);
-          }
+      if (response.status === 200) {
+        setBlog(response.data.data);
+        setisLoading(false)
       }
+    }
   };
 
-  const deletetheBlog=()=>{
+  const deletetheBlog = () => {
+    dispatch(deleteBlog(id));
+    console.log(status);
 
-   dispatch(deleteBlog(id) )
-console.log(status)
-  
-   if (status === STATUSES.SUCCESS){
-    
-    navigate("/");
-  }
-  else{
-    alert("You are not the Author !!")
-  }
-   
-  
-  }
+    if (status === STATUSES.SUCCESS) {
+      navigate("/");
+    } else {
+      alert("You are not the Author !!");
+    }
+  };
 
   useEffect(() => {
     fetchBlog();
-  }, []);
+  }, [status]);
 
   return (
+    
     <Layout>
+    <div>
+      {isloading && status === STATUSES.LOADING && (
+        <Spinner />
+      )}
+      </div>
       <div class="bg-gray-100 dark:bg-gray-800 py-8 h-screen">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col md:flex-row -mx-4">
@@ -69,32 +74,37 @@ console.log(status)
                   </Link>
                 </div>
                 <div class="w-1/2 px-2">
-                  <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600" onClick={deletetheBlog}>
+                  <button
+                    class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600"
+                    onClick={deletetheBlog}
+                  >
                     Delete
                   </button>
                 </div>
                 <div class="w-1/2 px-2 ">
-                <Link to="/">
-                  <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600" >
-                   Home
-                  </button>
+                  <Link to="/">
+                    <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">
+                      Home
+                    </button>
                   </Link>
                 </div>
               </div>
             </div>
             <div class="md:flex-1 px-4">
               <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">
-               Title: {blog.title}
+                Title: {blog.title}
               </h2>
               <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-              SubTitle: {blog.subtitle}
+                SubTitle: {blog.subtitle}
               </p>
               <div class="flex mb-4">
                 <div class="mr-4">
                   <span class="font-bold text-gray-700 dark:text-gray-300">
                     Category:
                   </span>
-                  <span class="text-gray-600 dark:text-gray-300">{blog.category}</span>
+                  <span class="text-gray-600 dark:text-gray-300">
+                    {blog.category}
+                  </span>
                 </div>
                 {/* <div>
                   <span class="font-bold text-gray-700 dark:text-gray-300">

@@ -15,7 +15,8 @@ import {Provider} from 'react-redux'
 
 import store from '../store/store'
 import Protected from './Protected'
-import { ErrorBoundary } from 'react-error-boundary'
+import DeleteBlog from './pages/blog/DeleteBlog'
+// import { ErrorBoundary } from 'react-error-boundary'
 function App() {
   return (
    
@@ -31,6 +32,9 @@ function App() {
              <Route path="/blog/add" element={<Protected><AddBlog /></Protected>} />
              <Route path="/blog/edit/:id" element={<Protected><EditBlog /></Protected>} />
             <Route path="/blogs/:id" element={<Protected> <SingleBlog /></Protected>} />
+            <Route path="/blogs/:ids" element={<Protected> <SingleBlog /></Protected>} />
+            <Route path="blog/delete" element={<DeleteBlog/>}/>
+
             
       </Routes>
       </BrowserRouter>

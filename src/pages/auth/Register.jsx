@@ -8,6 +8,7 @@ import STATUSES from "../../globals/status/statuses";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./ErrorPage.css";
 import { TailSpin } from "react-loader-spinner";
+import Spinner from "./components/Spinner";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -34,11 +35,7 @@ const Register = () => {
   return(
     <div>
     {isRegister && status === STATUSES.LOADING && (
-      <TailSpin
-        height="80"
-        width="80"
-        color="blue"
-        ariaLabel="loading"
+      <Spinner
       />
     )}
     <Form type="Register" onSubmit={handleRegister} />
