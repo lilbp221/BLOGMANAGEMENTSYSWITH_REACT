@@ -15,10 +15,10 @@ const Register = () => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.auth.status); //returns auth state and stores the status value of auth
   console.log(status);
-  const[isRegister,setisRegister]=useState(false)
+  const[isLoading,setisLoading]=useState(false) //for spineer
 
   const handleRegister = (data) => {
-    setisRegister(true)
+    setisLoading(true)
     dispatch(register(data)); 
     //sends data to the state or container of the authSlice //state
     // console.log(data)
@@ -27,14 +27,14 @@ const Register = () => {
   useEffect(() => {
     if (status === STATUSES.SUCCESS) {
       dispatch(setStatus(STATUSES.LOADING));
-      setisRegister(false) // Reset status to idle
+      setisLoading(false) // Reset status to idle
       navigate("/login");
     }
   }, [status, navigate, dispatch]);
 
   return(
     <div>
-    {isRegister && status === STATUSES.LOADING && (
+    {isLoading && status === STATUSES.LOADING && (
       <Spinner
       />
     )}

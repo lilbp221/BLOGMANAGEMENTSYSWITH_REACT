@@ -8,6 +8,7 @@ import STATUSES from "../../globals/status/statuses";
 import { useNavigate } from "react-router-dom";
 import { setStatus } from "../../../store/authSlice";
 import { TailSpin } from "react-loader-spinner";
+import Spinner from "../auth/components/Spinner";
 
 const AddBlog = () => {
   const dispatch = useDispatch();
@@ -41,11 +42,7 @@ const AddBlog = () => {
     <Layout>
     <div>
       {isLoading && status === STATUSES.LOADING && (
-        <TailSpin
-          height="80"
-          width="80"
-          color="blue"
-          ariaLabel="loading"
+        <Spinner
         />
       )}
       </div>

@@ -5,12 +5,7 @@ const Spinner = () => {
   return (
       <div  className="flex items-center justify-center min-h-screen">
       
-        {/* <TailSpin
-          height="80"
-          width="80"
-          color="blue"
-          ariaLabel="loading"
-        /> */}
+      
 
         <BallTriangle
   height={100}
@@ -22,9 +17,18 @@ const Spinner = () => {
   wrapperClass=""
   visible={true}
   />
-      
+    <div>
+   
+    </div> 
       </div>
   )
 }
 
 export default Spinner
+
+  {/* <TailSpin
+          height="80"
+          width="80"
+          color="blue"
+          ariaLabel="loading"
+        /> */}

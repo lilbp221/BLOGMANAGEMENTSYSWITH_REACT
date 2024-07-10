@@ -98,7 +98,6 @@ export function deleteBlog(id) {
         dispatch(setStatus(STATUSES.ERROR));
       }
     } catch (error) {
-      alert(error.response.data.message);
 
       dispatch(setStatus(STATUSES.ERROR));
     }

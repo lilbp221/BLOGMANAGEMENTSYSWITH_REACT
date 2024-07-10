@@ -7,18 +7,19 @@ import { useNavigate } from "react-router-dom";
 import { TailSpin } from "react-loader-spinner";
 import Spinner from "./components/Spinner";
 
+
 const Login = () => {
 
   const status = useSelector((state) => state.auth.status);
   const user = useSelector((state) => state.auth.user);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
  
 
   const handleLogin = (data) => {
-    setIsLoggingIn(true);
+    setisLoading(true);
     dispatch(login(data));
 
    
@@ -32,7 +33,7 @@ const Login = () => {
     if (status === STATUSES.SUCCESS) {
 
       dispatch(setStatus(STATUSES.LOADING))
-      setIsLoggingIn(false);
+      setisLoading(false);
       navigate("/");
     }
    
@@ -45,7 +46,7 @@ const Login = () => {
 
   return (
     <div>
-      {isLoggingIn && status === STATUSES.LOADING && (
+      {isLoading && status === STATUSES.LOADING && (
         <Spinner/>
       )}
       <Form type="Login" user={user} onSubmit={handleLogin} />
