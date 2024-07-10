@@ -1,16 +1,27 @@
 import React from 'react'
-import { TailSpin } from 'react-loader-spinner'
+import { BallTriangle, TailSpin } from 'react-loader-spinner'
 
 const Spinner = () => {
   return (
-      <div>
+      <div  className="flex items-center justify-center min-h-screen">
       
-        <TailSpin
+        {/* <TailSpin
           height="80"
           width="80"
           color="blue"
           ariaLabel="loading"
-        />
+        /> */}
+
+        <BallTriangle
+  height={100}
+  width={100}
+  radius={5}
+  color="#4fa94d"
+  ariaLabel="ball-triangle-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+  />
       
       </div>
   )
