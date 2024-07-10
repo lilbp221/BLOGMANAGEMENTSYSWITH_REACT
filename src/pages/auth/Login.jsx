@@ -21,6 +21,8 @@ const Login = () => {
     setIsLoggingIn(true);
     dispatch(login(data));
 
+   
+
     // if (status === STATUSES.SUCCESS) {
     //   navigate("/");
     // }
@@ -33,6 +35,8 @@ const Login = () => {
       setIsLoggingIn(false);
       navigate("/");
     }
+   
+    
   }, [status, navigate,dispatch]);
 
   // return (

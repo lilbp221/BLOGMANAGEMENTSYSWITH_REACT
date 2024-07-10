@@ -33,7 +33,6 @@ const SingleBlog = () => {
 
   const deletetheBlog = () => {
     dispatch(deleteBlog(id));
-    console.log(status);
 
     if (status === STATUSES.SUCCESS) {
       navigate("/");
@@ -44,7 +43,7 @@ const SingleBlog = () => {
 
   useEffect(() => {
     fetchBlog();
-  }, [status]);
+  }, []);
 
   return (
     

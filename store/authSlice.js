@@ -69,6 +69,7 @@ export function login(data){
             dispatch(setToken(response.data.token))
             dispatch(setStatus(STATUSES.SUCCESS))
         }else{
+            
             dispatch(setStatus(STATUSES.ERROR))
         }
      } catch (error) {
