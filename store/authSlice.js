@@ -3,6 +3,8 @@ import axios from 'axios'
 import STATUSES from '../src/globals/status/statuses'
 import { useNavigate } from 'react-router-dom'
 import API from '../src/http'
+import { useSelector } from 'react-redux'
+import { TailSpin } from 'react-loader-spinner'
 
 
 const authSlice = createSlice({
@@ -38,6 +40,7 @@ export function register(data){
     
     return async function registerThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
+        
         try {
             const response =  await API.post("register",data)
             if(response.status === 201){
@@ -57,8 +60,10 @@ export function register(data){
 export function login(data){
     return async function loginThunk(dispatch){
         dispatch(setStatus(STATUSES.LOADING))
+
      try {
         const response =  await axios.post('https://react30.onrender.com/api/user/login',data)
+
         if(response.status === 200 && response.data.token){
             localStorage.setItem('token',response.data.token) // setting token for individual
             dispatch(setToken(response.data.token))
