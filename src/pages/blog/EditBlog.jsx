@@ -20,14 +20,19 @@ const EditBlog = () => {
 
   const handleEdit = async (data) => {
     dispatch(editBlog(data, id));
+    if (status == STATUSES.SUCCESS) {
+          navigate(`/blogs/${id}`);
+          dispatch(setStatus(STATUSES.LOADING));
+        }
   };
 
-  useEffect(() => {
-    if (status == STATUSES.SUCCESS) {
-      navigate(`/blogs/${id}`);
-      dispatch(setStatus(STATUSES.LOADING));
-    }
-  }, [status,dispatch,navigate]);
+  // useEffect(() => {
+  //   if (status == STATUSES.SUCCESS) {
+  //     navigate(`/blogs/${id}`);
+  //     dispatch(setStatus(STATUSES.LOADING));
+  //   }
+  // }, [status,dispatch,navigate]);
+
   return (
     <Layout>
       <Form type="Edit" onSubmit={handleEdit} />

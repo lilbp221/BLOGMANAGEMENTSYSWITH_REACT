@@ -6,18 +6,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBlog } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
 import { setStatus } from "../../../store/authSlice";
+import Spinner from "../auth/components/Spinner";
 
 const Home = () => {
 
   const dispatch = useDispatch();
   const { data,status } = useSelector((state) => state.blog);
+  
+  const[isLoading,setisLoading]=useState(false)
+
+  const load =()=>{
+
+    if(status===STATUSES.LOADING){
+      return setisLoading(true)
+    }
+   else{
+
+    return setisLoading(false)
+  
+    }  
+  }
+
+
 
   console.log(data);
   console.log(status);
 
 
+
   useEffect(() => {
-    dispatch(fetchBlog());
+    dispatch(fetchBlog())
+    load();
     
 
   }, [dispatch]);
@@ -25,6 +44,9 @@ const Home = () => {
   return (
     <Layout>
 
+{isLoading && status===STATUSES.LOADING&&(
+  <Spinner/>
+)}
     
    
       <div className="flex flex-wrap justify-center space-x-5 mt-6">

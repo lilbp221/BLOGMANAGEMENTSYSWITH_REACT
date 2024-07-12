@@ -65,7 +65,7 @@ export function fetchBlog() {
       );
 
       if (response.status === 200 && response.data.data.length>0) {
-        // dispatch(setStatus(STATUSES.SUCCESS));
+        dispatch(setStatus(STATUSES.SUCCESS));
         dispatch(setBlog(response.data.data)) //setblogData(input data)
         console.log(response.data.data)
 

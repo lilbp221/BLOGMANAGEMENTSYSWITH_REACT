@@ -7,6 +7,7 @@ import { deleteBlog } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
 import { TailSpin } from "react-loader-spinner";
 import Spinner from "../auth/components/Spinner";
+import { setStatus } from "../../../store/authSlice";
 
 const SingleBlog = () => {
   const dispatch = useDispatch();
@@ -36,13 +37,16 @@ const SingleBlog = () => {
 
     if (status === STATUSES.SUCCESS) {
       navigate("/");
-    } else {
-      alert("You are not the Author !!");
+    } else if(status === STATUSES.ERROR) {
+
+      alert("ERROR DELETING BLOG!!");
+
     }
   };
 
   useEffect(() => {
     fetchBlog();
+    // dispatch(setStatus(STATUSES.LOADING));
   }, []);
 
   return (
