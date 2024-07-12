@@ -22,19 +22,22 @@ const AddBlog = () => {
   const handleAddblog = (data) => {
     setisLoading(true);
     dispatch(createBlog(data));
-  };
-
-  useEffect(()=>{
     if (status === STATUSES.SUCCESS) {
       dispatch(setStatus("STATUSES.LOADING"));
       setisLoading(false)
       navigate("/");
     }
-    else{
-      setisLoading(false)
- 
-    }
-  },[status,navigate,dispatch])
+      else {
+        setisLoading(false)
+   
+      }
+  };
+
+  // // useEffect(()=>{
+   
+  // //   }
+   
+  // },[status,navigate,dispatch])
 
   return (
     
