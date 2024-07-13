@@ -9,48 +9,23 @@ import { setStatus } from "../../../store/authSlice";
 import Spinner from "../auth/components/Spinner";
 
 const Home = () => {
-
   const dispatch = useDispatch();
-  const { data,status } = useSelector((state) => state.blog);
-  
-  const[isLoading,setisLoading]=useState(false)
-
-  const load =()=>{
-
-    if(status===STATUSES.LOADING){
-      return setisLoading(true)
-    }
-   else{
-
-    return setisLoading(false)
-  
-    }  
-  }
-
-
+  const { data, status } = useSelector((state) => state.blog);
 
   console.log(data);
   console.log(status);
 
-
-
   useEffect(() => {
-    dispatch(fetchBlog())
-    load();
-    
-
+    dispatch(fetchBlog());
   }, [dispatch]);
 
   return (
     <Layout>
+      {status === STATUSES.LOADING && 
+      <Spinner />
+      }
 
-{isLoading && status===STATUSES.LOADING&&(
-  <Spinner/>
-)}
-    
-   
       <div className="flex flex-wrap justify-center space-x-5 mt-6">
-
         {data.length > 0 &&
           data.map((blog) => {
             //higher order functoin like map() only works with array

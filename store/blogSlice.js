@@ -94,7 +94,9 @@ export function deleteBlog(id) {
 
       if (response.status === 200) {
         dispatch(setStatus(STATUSES.SUCCESS));
-      } else {
+      } 
+      else 
+      {
         dispatch(setStatus(STATUSES.ERROR));
       }
     } catch (error) {

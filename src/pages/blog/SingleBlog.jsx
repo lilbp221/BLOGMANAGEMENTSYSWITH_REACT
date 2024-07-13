@@ -13,8 +13,8 @@ const SingleBlog = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const { status } = useSelector((state) => state.blog);
-  const[isloading,setisLoading]=useState(true)
+  const { status:here } = useSelector((state) => state.blog);
+  const [isloading, setisLoading] = useState(true);
 
   const [blog, setBlog] = useState({}); //i want object in useState so {}
 
@@ -25,38 +25,35 @@ const SingleBlog = () => {
       `https://react30.onrender.com/api/user/blog/${id}`
     );
     if (response.status === 200) {
-      if (response.status === 200) {
-        setBlog(response.data.data);
-        setisLoading(false)
-      }
+      setBlog(response.data.data);
+      setisLoading(false);
     }
   };
+
+  console.log(here)
 
   const deletetheBlog = () => {
     dispatch(deleteBlog(id));
 
-    if (status === STATUSES.SUCCESS) {
+    if (here === STATUSES.SUCCESS) {
       navigate("/");
-    } else if(status === STATUSES.ERROR) {
-
+    } else {
       alert("ERROR DELETING BLOG!!");
-
     }
+
   };
 
   useEffect(() => {
     fetchBlog();
-    // dispatch(setStatus(STATUSES.LOADING));
   }, []);
 
+  // useEffect(()=>{
+
+  // },[deleteBlog,deletetheBlog])
+
   return (
-    
     <Layout>
-    <div>
-      {isloading && status === STATUSES.LOADING && (
-        <Spinner />
-      )}
-      </div>
+      <div>{isloading && status === STATUSES.LOADING && <Spinner />}</div>
       <div class="bg-gray-100 dark:bg-gray-800 py-8 h-screen">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-col md:flex-row -mx-4">
