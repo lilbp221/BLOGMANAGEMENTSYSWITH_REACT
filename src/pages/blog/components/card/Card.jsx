@@ -41,16 +41,16 @@ const Card = ({ blog }) => {
 
 //  console.log(blog.userId.username)
   return (
-    <Link to={`/blogs/${blog._id}`} className="block rounded overflow-hidden shadow-lg mb-4">
+    <Link to={`/blogs/${blog._id}`} className="block rounded overflow-hidden shadow-lg mb-4 font-mono">
       <div className="grid grid-rows-[auto,auto,1fr,auto] h-full">
-        <img className="w-full h-48 object-cover row-span-1" src={blog?.imageUrl} alt={blog.title} />
+        <img className="w-full h-48 object-cover row-span-1 rounded-lg" src={blog?.imageUrl} alt={blog.title} />
 
         <div className="px-6 py-4 row-span-1">
-          <div className="font-bold text-xl mb-2 truncate">Title: {blog?.title}</div>
+          <div className="font-mono font-light text-xl mb-2 truncate">Title: {blog?.title}</div>
         </div>
       
         <div className="px-6 py-4 row-span-1 flex-1">
-          <p className="text-gray-700 text-base overflow-hidden line-clamp-3">Description:{blog?.description}</p>
+          <p className="text-gray-700 text-base overflow-hidden line-clamp-3 ">Description:{blog?.description}</p>
         </div>
        
 

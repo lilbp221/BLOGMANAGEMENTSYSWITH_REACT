@@ -25,7 +25,7 @@ const Home = () => {
       <Spinner />
       }
 
-      <div className="flex flex-wrap justify-center space-x-5 mt-6">
+      <div className="flex flex-wrap justify-center w-full space-x-5 mt-6">
         {data.length > 0 &&
           data.map((blog) => {
             //higher order functoin like map() only works with array

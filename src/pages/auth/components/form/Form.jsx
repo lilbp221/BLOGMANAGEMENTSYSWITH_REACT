@@ -31,12 +31,10 @@ const Form = ({type,onSubmit,user}) => {
         onSubmit(data)
     }
   return (
-    <div className="min-h-screen bg-gradient-to-l from-blue-300 to-blue-600 transform py-6 flex flex-col justify-center sm:py-12 shadow-2xl">
-    <div className="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div
-            className="absolute inset-0 0 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
-        </div>
-        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+    <div className="min-h-screen bg-gradient-to-l from-blue-300 to-blue-600 transform py-6 flex flex-col justify-center sm:py-12 shadow-2xl md:mx-auto ">
+    <div className="relative py-5 px-3 px-auto sm:max-w-2xl sm:mx-auto md:mx-auto lg:mx-auto  ">
+        
+        <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl rounded-xl sm:p-20">
             <div className="max-w-md mx-auto">
                 <div>
                     <h1 className="text-2xl font-semibold font-mono text-center">
