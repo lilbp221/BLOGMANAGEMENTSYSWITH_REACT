@@ -27,6 +27,7 @@ const {deleteStatus}= useSelector((state)=>state.blog)
 
     if (response.status === 200) {
       setBlog(response.data.data);
+      //  console.log(response.data.data.userId._id)
       setisLoading(false);
 
     }

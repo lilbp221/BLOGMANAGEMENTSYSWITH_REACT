@@ -26,7 +26,7 @@ const EditBlog = () => {
           dispatch(setStatus(STATUSES.LOADING));
         }
         else{
-          alert("You are not allowed to edit this blog!")
+          alert("You may not be  allowed to edit this blog, please retry!!")
           navigate(`/blogs/${id}`);
 
         }
