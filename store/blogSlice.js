@@ -10,7 +10,8 @@ const blogSlice = createSlice({
   initialState: {
    data: [] , //empty object //higher order functoin like map() only works with array
     status: null,
-  },
+deleteStatus:null,  },
+
   reducers: {
     setBlog(state, action) {
       state.data = action.payload;
@@ -18,12 +19,14 @@ const blogSlice = createSlice({
     setStatus(state, action) {
       state.status = action.payload;
     },
+    setdeleteStatus(state, action) {
+      state.deleteStatus = action.payload;
   },
-});
+}});
 
 
-const { setBlog, setStatus } = blogSlice.actions;
-export default blogSlice.reducer;
+const { setBlog, setStatus, setdeleteStatus} = blogSlice.actions;
+export default blogSlice.reducer
 
 //thunk for api hitting while creating a blog
 export function createBlog(data) {
@@ -65,7 +68,7 @@ export function fetchBlog() {
       );
 
       if (response.status === 200 && response.data.data.length>0) {
-        dispatch(setStatus(STATUSES.SUCCESS));
+        dispatch(setStatus(STATUSES.SUCCESS))
         dispatch(setBlog(response.data.data)) //setblogData(input data)
         console.log(response.data.data)
 
@@ -82,9 +85,7 @@ export function fetchBlog() {
 export function deleteBlog(id) {
 
   return async function deleteBlogThunk(dispatch) {
-
-    dispatch(setStatus(STATUSES.LOADING));
-
+    dispatch(setdeleteStatus(STATUSES.LOADING));
     try {
       const response = await API.delete(`blog/${id}`, {
         headers: {
@@ -92,16 +93,17 @@ export function deleteBlog(id) {
         },
       });
 
-      if (response.status === 200) {
-        dispatch(setStatus(STATUSES.SUCCESS));
+      if (response.status === 200) 
+        {
+        dispatch(setdeleteStatus(STATUSES.SUCCESS));
       } 
       else 
       {
-        dispatch(setStatus(STATUSES.ERROR));
+        dispatch(setdeleteStatus(STATUSES.ERROR));
       }
     } catch (error) {
 
-      dispatch(setStatus(STATUSES.ERROR));
+      dispatch(setdeleteStatus(STATUSES.ERROR));
     }
   };
 }

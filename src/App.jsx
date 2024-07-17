@@ -29,8 +29,6 @@ function App() {
              <Route path="/blog/add" element={<Protected><AddBlog /></Protected>} />
              <Route path="/blog/edit/:id" element={<Protected><EditBlog /></Protected>} />
             <Route path="/blogs/:id" element={<Protected> <SingleBlog /></Protected>} />
-
-            
       </Routes>
       </BrowserRouter>
       {/* </ErrorBoundary> */}

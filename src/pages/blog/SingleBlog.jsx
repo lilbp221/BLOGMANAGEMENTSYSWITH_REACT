@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { deleteBlog } from "../../../store/blogSlice";
+import { setdeleteStatus } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
 import { TailSpin } from "react-loader-spinner";
 import Spinner from "../auth/components/Spinner";
@@ -13,10 +14,10 @@ const SingleBlog = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
-  const { status:here } = useSelector((state) => state.blog);
   const [isloading, setisLoading] = useState(true);
-
+const {deleteStatus}= useSelector((state)=>state.blog)
   const [blog, setBlog] = useState({}); //i want object in useState so {}
+  console.log(deleteStatus)
 
   //for fetching the form data in single blog page i.e the page that opens after card from hoome page is clicked
 
@@ -24,32 +25,37 @@ const SingleBlog = () => {
     const response = await axios.get(
       `https://react30.onrender.com/api/user/blog/${id}`
     );
+
     if (response.status === 200) {
       setBlog(response.data.data);
       setisLoading(false);
     }
+    dispatch(setStatus(STATUSES.LOADING))
   };
 
-  console.log(here)
-
-  const deletetheBlog = () => {
+  const deletetheBlog =  () => {
     dispatch(deleteBlog(id));
 
-    if (here === STATUSES.SUCCESS) {
+    if (deleteStatus === STATUSES.SUCCESS) 
+      {
+    dispatch(setdeleteStatus(STATUSES.LOADING));
+       
       navigate("/");
-    } else {
+      
+    } else 
+    {
       alert("ERROR DELETING BLOG!!");
     }
 
   };
 
+
+
   useEffect(() => {
     fetchBlog();
-  }, []);
+  }, [dispatch,navigate]);
 
-  // useEffect(()=>{
 
-  // },[deleteBlog,deletetheBlog])
 
   return (
     <Layout>
