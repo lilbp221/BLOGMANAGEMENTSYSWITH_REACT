@@ -43,7 +43,7 @@ const Card = ({ blog }) => {
   return (
     <Link to={`/blogs/${blog._id}`} className="block rounded overflow-hidden shadow-lg mb-4 font-mono">
       <div className="grid grid-rows-[auto,auto,1fr,auto] h-full">
-        <img className="w-full h-48 object-cover row-span-1 rounded-lg text-sm" src={blog?.imageUrl} alt="Image not displayed due to hosting storage issues!" />
+        <img className="w-full h-48 object-cover row-span-1 rounded-lg text-sm" src={blog?.imageUrl} alt="Image coundn't be loaded due to hosting storage issues!" />
 
         <div className="px-6 py-4 row-span-1">
           <div className="font-mono font-light text-xl mb-2 truncate">Title: {blog?.title}</div>
