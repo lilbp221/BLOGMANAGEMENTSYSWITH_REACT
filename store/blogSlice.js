@@ -25,7 +25,7 @@ deleteStatus:null,  },
 }});
 
 
-const { setBlog, setStatus, setdeleteStatus} = blogSlice.actions;
+export const { setBlog, setStatus, setdeleteStatus} = blogSlice.actions;
 export default blogSlice.reducer
 
 //thunk for api hitting while creating a blog
@@ -85,7 +85,7 @@ export function fetchBlog() {
 export function deleteBlog(id) {
 
   return async function deleteBlogThunk(dispatch) {
-    dispatch(setdeleteStatus(STATUSES.LOADING));
+    // dispatch(setdeleteStatus(STATUSES.LOADING));
     try {
       const response = await API.delete(`blog/${id}`, {
         headers: {

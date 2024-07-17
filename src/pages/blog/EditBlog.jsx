@@ -21,8 +21,14 @@ const EditBlog = () => {
   const handleEdit = async (data) => {
     dispatch(editBlog(data, id));
     if (status == STATUSES.SUCCESS) {
+
           navigate(`/blogs/${id}`);
           dispatch(setStatus(STATUSES.LOADING));
+        }
+        else{
+          alert("You are not allowed to edit this blog!")
+          navigate(`/blogs/${id}`);
+
         }
   };
 

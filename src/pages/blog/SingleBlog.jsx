@@ -3,8 +3,7 @@ import Layout from "../../components/layout/Layout";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { deleteBlog } from "../../../store/blogSlice";
-import { setdeleteStatus } from "../../../store/blogSlice";
+import { deleteBlog, setdeleteStatus } from "../../../store/blogSlice";
 import STATUSES from "../../globals/status/statuses";
 import { TailSpin } from "react-loader-spinner";
 import Spinner from "../auth/components/Spinner";
@@ -29,8 +28,8 @@ const {deleteStatus}= useSelector((state)=>state.blog)
     if (response.status === 200) {
       setBlog(response.data.data);
       setisLoading(false);
+
     }
-    dispatch(setStatus(STATUSES.LOADING))
   };
 
   const deletetheBlog =  () => {
@@ -38,13 +37,11 @@ const {deleteStatus}= useSelector((state)=>state.blog)
 
     if (deleteStatus === STATUSES.SUCCESS) 
       {
-    dispatch(setdeleteStatus(STATUSES.LOADING));
-       
+        dispatch(setdeleteStatus(STATUSES.LOADING))
       navigate("/");
-      
     } else 
     {
-      alert("ERROR DELETING BLOG!!");
+      alert("You may not be allowed to delete this blog. Please retry!");
     }
 
   };
