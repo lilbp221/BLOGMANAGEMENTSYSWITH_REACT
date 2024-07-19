@@ -139,6 +139,8 @@ const {deleteStatus}= useSelector((state)=>state.blog)
               </div>
 
               <div class="flex mb-4">
+              <div class="mr-4">
+
                 <span class="text-gray-600 dark:text-gray-300 text-sm mb-4 font-mono">
                   Created At:
                 </span>
@@ -147,6 +149,8 @@ const {deleteStatus}= useSelector((state)=>state.blog)
                   
                 </span>
               </div>
+              </div>
+
             </div>
           </div>
         </div>
