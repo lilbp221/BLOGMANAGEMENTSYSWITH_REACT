@@ -63,9 +63,9 @@ export function login(data){
 
      try {
         const response =  await axios.post('https://react30.onrender.com/api/user/login',data)
-// console.log(response)
         if(response.status === 200 && response.data.token){
 
+            localStorage.setItem('userid', response.data.data[0]._id);
             localStorage.setItem('token',response.data.token) // setting token for individual
             dispatch(setToken(response.data.token))
             dispatch(setStatus(STATUSES.SUCCESS))

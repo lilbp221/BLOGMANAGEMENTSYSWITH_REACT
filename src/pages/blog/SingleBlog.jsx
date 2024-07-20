@@ -16,6 +16,7 @@ const SingleBlog = () => {
   const [isloading, setisLoading] = useState(true);
 const {deleteStatus}= useSelector((state)=>state.blog)
   const [blog, setBlog] = useState({}); //i want object in useState so {}
+  const[userId,setuserId]=useState(null)
   console.log(deleteStatus)
 
   //for fetching the form data in single blog page i.e the page that opens after card from hoome page is clicked
@@ -27,6 +28,8 @@ const {deleteStatus}= useSelector((state)=>state.blog)
 
     if (response.status === 200) {
       setBlog(response.data.data);
+      setuserId(response?.data?.data?.userId?._id)
+      console.log(userId)
       //  console.log(response.data.data.userId._id)
       setisLoading(false);
 
@@ -40,10 +43,7 @@ const {deleteStatus}= useSelector((state)=>state.blog)
       {
         dispatch(setdeleteStatus(STATUSES.LOADING))
       navigate("/");
-    } else 
-    {
-      alert("You may not be allowed to delete this blog. Please retry!");
-    }
+    } 
 
   };
 
@@ -64,19 +64,23 @@ const {deleteStatus}= useSelector((state)=>state.blog)
             <div class="md:flex-1 px-4">
               <div class="h-[200px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
                 <img
-                  class="w-full h-[200px] object-cover rounded-lg"
+                  class="w-full h-[200px] object-cover rounded-lg text-xs"
                   src={blog.imageUrl}
-                  alt="Product Image"
+                  alt="Image coundn't be loaded due to hosting storage issues!"
                 />
               </div>
               <div class="flex -mx-2 mb-4">
-                <div class="w-1/2 px-2">
+
+{userId===localStorage.getItem('userid')&&(<>
+     {/* edit */}
+     <div class="w-1/2 px-2">
                   <Link to={`/blog/edit/${blog._id}`}>
                     <button class="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-mono hover:bg-gray-800 dark:hover:bg-gray-700">
                       Edit
                     </button>
                   </Link>
                 </div>
+                {/* delete */}
                 <div class="w-1/2 px-2">
                   <button
                     class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-mono hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -85,6 +89,8 @@ const {deleteStatus}= useSelector((state)=>state.blog)
                     Delete
                   </button>
                 </div>
+</>)}
+           
                 <div class="w-1/2 px-2 ">
                   <Link to="/">
                     <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-mono hover:bg-gray-300 dark:hover:bg-gray-600">
