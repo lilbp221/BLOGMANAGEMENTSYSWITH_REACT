@@ -64,7 +64,7 @@ const {deleteStatus}= useSelector((state)=>state.blog)
             <div class="md:flex-1 px-4">
               <div class="h-[200px] rounded-lg bg-gray-300 dark:bg-gray-700 mb-4">
                 <img
-                  class="w-full h-[200px] object-cover rounded-lg text-xs"
+                  class="w-full h-[200px] object-cover rounded-lg text-md"
                   src={blog.imageUrl}
                   alt="Image coundn't be loaded due to hosting storage issues!"
                 />
