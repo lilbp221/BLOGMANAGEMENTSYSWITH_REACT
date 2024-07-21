@@ -111,8 +111,9 @@ const Form = ({ type, onSubmit }) => {
             </div>
             <div class="my-2 w-1/2 lg:w-1/4">
               <button
-                class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
-                      focus:outline-none focus:shadow-outline"
+               className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 w-full font-mono" aria-current="page"
               >
                {type}
               </button>

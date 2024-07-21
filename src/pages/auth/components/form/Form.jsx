@@ -130,7 +130,9 @@ const Form = ({ type, onSubmit, user }) => {
                   )}
 
                   <div className="relative">
-                    <button className="bg-blue-500 text-white rounded-md px-2 py-1 font-mono ">
+                    <button className="block py-1 px-2 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono">
                       Submit
                     </button>
                   </div>

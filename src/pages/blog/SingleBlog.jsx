@@ -75,7 +75,9 @@ const {deleteStatus}= useSelector((state)=>state.blog)
      {/* edit */}
      <div class="w-1/2 px-2">
                   <Link to={`/blog/edit/${blog._id}`}>
-                    <button class="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-mono hover:bg-gray-800 dark:hover:bg-gray-700">
+                    <button className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 w-full font-mono" aria-current="page" >
                       Edit
                     </button>
                   </Link>
@@ -83,7 +85,9 @@ const {deleteStatus}= useSelector((state)=>state.blog)
                 {/* delete */}
                 <div class="w-1/2 px-2">
                   <button
-                    class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-mono hover:bg-gray-300 dark:hover:bg-gray-600"
+                   className="block py-2 px-3 bg-gradient-to-r from-red-400 to-red-600 
+    hover:from-red-600 hover:to-red-800 
+    text-white rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 w-full font-mono" aria-current="page"
                     onClick={deletetheBlog}
                   >
                     Delete
@@ -93,7 +97,9 @@ const {deleteStatus}= useSelector((state)=>state.blog)
            
                 <div class="w-1/2 px-2 ">
                   <Link to="/">
-                    <button class="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-mono hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <button className="block py-2 px-3 bg-gradient-to-r from-teal-400 to-teal-600 
+    hover:from-teal-600 hover:to-blue-800 
+    text-white rounded-full shadow-xl transition-all duration-300 transform hover:scale-105 w-full font-mono" aria-current="page">
                       Home
                     </button>
                   </Link>

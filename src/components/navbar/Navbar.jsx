@@ -43,11 +43,15 @@ dispatch(setToken(null))
        {isLoggedIn?(
         <div class="flex justify auto gap-2">
         <div>
-          <Link to="/blog/add" className="block py-2 px-3  text-white bg-blue-700 rounded md:bg-blue-700  md:text-white" aria-current="page">Create Blog</Link>
+          <Link to="/blog/add" className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono" aria-current="page">Create Blog</Link>
         </div>
 
         <div>
-          <Link onClick={handleLogout} className="block py-2 px-3 text-white bg-pink-700 rounded md:bg-pink-700  md:text-white">Logout</Link>
+          <Link onClick={handleLogout} className="block py-2 px-3 bg-gradient-to-r from-red-400 to-red-600 
+    hover:from-red-600 hover:to-red-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono">Logout</Link>
         </div>
         </div>
        ): 
@@ -56,10 +60,14 @@ dispatch(setToken(null))
        (
         <>
         <li>
-         <Link to="/register" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Register</Link>
+         <Link to="/register" className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono" aria-current="page">Register</Link>
        </li>
        <li>
-         <Link to="/login" className="block py-2 px-3 my-1 text-white bg-blue-700 rounded md:bg-blue-700  md:text-white">Login</Link>
+         <Link to="/login" className="block py-2 px-3 bg-gradient-to-r from-blue-400 to-blue-600 
+    hover:from-blue-600 hover:to-blue-800 
+    text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono" aria-current="page">Login</Link>
        </li>
             
        
