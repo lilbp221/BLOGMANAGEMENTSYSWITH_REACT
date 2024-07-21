@@ -223,20 +223,20 @@ return(
         className="h-8" 
         alt="Blogbook logo" 
       />
-      <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Blogbook</span>
+      <span className="self-center text-lg font-semibold whitespace-nowrap dark:text-white font-mono">Blogbook</span>
     </Link>
     <div className="flex items-center space-x-2 rtl:space-x-reverse mt-4 md:mt-0">
       {isLoggedIn ? (
         <div class="flex items-center justify-center gap-2 " >
           <Link 
             to="/blog/add" 
-            className=" flex items-center justify-center py-1 px-2 text-xs md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono h-10"
+            className=" flex items-center justify-center py-1 px-2 text-sm md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono h-10 " 
           >
             Add Blog
           </Link>
           <Link 
             onClick={handleLogout} 
-            className=" flex items-center justify-center py-1 px-2 text-xs md:text-sm lg:text-base bg-gradient-to-r from-red-400 to-red-600 hover:from-red-600 hover:to-red-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono h-10"
+            className=" flex items-center justify-center py-1 px-2 text-sm md:text-sm lg:text-base bg-gradient-to-r from-red-400 to-red-600 hover:from-red-600 hover:to-red-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono h-10"
           >
             Logout
           </Link>
@@ -245,13 +245,13 @@ return(
         <div class="flex items-center justify-center gap-2 ">
           <Link 
             to="/register" 
-            className=" flex items-center justify-center py-1 px-2 text-xs md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono w-full h-10"
+            className=" flex items-center justify-center py-1 px-2 text-sm md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono  h-10"
           >
             Register
           </Link>
           <Link 
             to="/login" 
-            className=" flex items-center justify-center py-1 px-2 text-xs md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono h-10"
+            className=" flex items-center justify-center py-1 px-2 text-sm md:text-sm lg:text-base bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-mono  h-10"
           >
             Login
           </Link>
