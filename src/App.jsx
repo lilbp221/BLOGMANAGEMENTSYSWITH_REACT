@@ -1,4 +1,3 @@
-import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/blog/Home'
 import Register from './pages/auth/Register'
@@ -6,14 +5,12 @@ import Login from './pages/auth/Login'
 import AddBlog from './pages/blog/AddBlog'
 import EditBlog from './pages/blog/EditBlog'
 import SingleBlog from './pages/blog/SingleBlog'
-import handleError from './pages/auth/components/handleError'
 
 import {Provider} from 'react-redux'
 
 import store from '../store/store'
 import Protected from './Protected'
 import DeleteBlog from './pages/blog/DeleteBlog'
-// import { ErrorBoundary } from 'react-error-boundary'
 function App() {
   return (
    
