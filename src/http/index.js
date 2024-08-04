@@ -8,10 +8,6 @@ const API=axios.create({
             // "Content-Type":'multipart/form-data', //for multimedia like photos in blog
             "Accept":'application/json',
             Authorization: localStorage.getItem("token"),
-
-       
-
-
             
       }
 })

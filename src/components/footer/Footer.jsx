@@ -10,7 +10,7 @@ const Footer = () => {
                  <div className="flex items-center space-x-3 rtl:space-x-reverse">
                     <img 
                       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvT9uDJ9kV7C3zO6iOt95e24Dtt3QMSncmqLLsuv4KWpeC_Gx6C0AZZpyHQWps4h-Psq8&usqp=CAU" 
-                      className="h-10 " 
+                      className="h-8 w-8 rounded-full  " 
                       alt="Blogbook logo" 
                     />
                     <span className="text-lg font-bold whitespace-nowrap font-mono">Blogbook</span>
